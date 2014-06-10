@@ -1,8 +1,8 @@
-define([], function() {
     'use strict';
 
-    URLResolver.$inject = ['$http', '$q', 'config'];
-    function URLResolver($http, $q, config) {
+angular
+  .module('eveApi')
+  .service('urls', ['$http', '$q', 'config', function($http, $q, config) {
 
         var links;
 
@@ -56,7 +56,4 @@ define([], function() {
                 return links;
             });
         }
-    }
-
-    return URLResolver;
-});
+  }]);

@@ -1,4 +1,4 @@
-define(['./url-resolver-service'], function(URLResolver) {
+//define(['./url-resolver-service'], function(URLResolver) {
     'use strict';
 
     describe('url resolver', function() {
@@ -61,4 +61,4 @@ define(['./url-resolver-service'], function(URLResolver) {
 
         }));
     });
-});
+//});

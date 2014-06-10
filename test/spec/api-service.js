@@ -1,7 +1,3 @@
-define([
-    './api-service',
-    './url-resolver-service'
-], function(APIProvider, UrlResolver) {
     'use strict';
 
     function collection(data) {
@@ -32,15 +28,19 @@ define([
         }
     };
 
-    function doConfig($provide) {
-        $provide.service('urls', UrlResolver);
-        $provide.constant('config', {server: {url: SERVER_URL}});
-        var apiProvider = $provide.provider('api', APIProvider);
-        apiProvider.api('http', HTTP_API);
-    }
-
     describe('API Provider', function() {
-        beforeEach(module(doConfig));
+        // configure the API provider
+        beforeEach(function() {
+            angular.module('configure.test', function(){})
+                .config(function(apiProvider) {
+                    apiProvider.api('http', HTTP_API);
+                });
+        });
+        // mock the config value
+        beforeEach(module(function($provide) {
+            $provide.constant('config', {server: {url: SERVER_URL}});
+        }));
+        beforeEach(module('eveApi', 'configure.test'));
 
         it('exists', inject(function(api) {
             expect(api).toBeDefined();
@@ -63,7 +63,18 @@ define([
 
     describe('HTTP API Endpoint', function() {
 
-        beforeEach(module(doConfig));
+        // configure the API provider
+        beforeEach(function() {
+            angular.module('configure.test', function(){})
+                .config(function(apiProvider) {
+                    apiProvider.api('http', HTTP_API);
+                });
+        });
+        // mock the config value
+        beforeEach(module(function($provide) {
+            $provide.constant('config', {server: {url: SERVER_URL}});
+        }));
+        beforeEach(module('eveApi', 'configure.test'));
 
         afterEach(inject(function($httpBackend) {
             $httpBackend.verifyNoOutstandingExpectation();
@@ -310,5 +321,3 @@ define([
             expect(api.http.getHeaders()['X-Filter']).toBe('User.*');
         }));
     });
-
-});

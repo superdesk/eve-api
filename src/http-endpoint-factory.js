@@ -1,11 +1,12 @@
-define(['lodash'], function(_) {
+//define(['lodash'], function(_) {
     'use strict';
 
     /**
      * Http endpoint factory
      */
-    HttpEndpointFactory.$inject = ['$http', '$q', 'urls'];
-    function HttpEndpointFactory($http, $q, urls) {
+angular
+  .module('eveApi')
+  .factory('HttpEndpoint', ['$http', '$q', 'urls', function($http, $q, urls) {
 
         /**
          * Get url for given resource
@@ -220,7 +221,6 @@ define(['lodash'], function(_) {
         };
 
         return HttpEndpoint;
-    }
 
-    return HttpEndpointFactory;
-});
+    }]);
+//});

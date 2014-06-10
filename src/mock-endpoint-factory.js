@@ -1,11 +1,12 @@
-define(['lodash'], function(_) {
+//define(['lodash'], function(_) {
     'use strict';
 
     /**
      * Mock endpoint
      */
-    MockEndpointFactory.$inject = ['$q'];
-    function MockEndpointFactory($q) {
+angular
+    .module('eveApi')
+    .factory('MockEndpoint', ['$q', function($q) {
 
         function MockCursor(data) {
             this.total = data.length;
@@ -84,7 +85,4 @@ define(['lodash'], function(_) {
         };
 
         return MockEndpoint;
-    }
-
-    return MockEndpointFactory;
-});
+}]);

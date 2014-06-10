@@ -1,14 +1,11 @@
-define([
-    'lodash',
-    './mock-endpoint-factory',
-    './http-endpoint-factory'
-], function(_, MockEndpointFactory, HttpEndpointFactory) {
     'use strict';
 
     /**
      * Api layer provider
      */
-    function APIProvider() {
+angular
+  .module('eveApi')
+  .provider('api', function() {
         var apis = {};
 
         /**
@@ -21,12 +18,14 @@ define([
 
         this.$get = apiServiceFactory;
 
-        apiServiceFactory.$inject = ['$injector'];
-        function apiServiceFactory($injector) {
+        apiServiceFactory.$inject = ['$injector',
+                                     'MockEndpoint',
+                                     'HttpEndpoint'];
+        function apiServiceFactory($injector, MockEndpoint, HttpEndpoint) {
 
             var endpoints = {
-                'mock': $injector.invoke(MockEndpointFactory),
-                'http': $injector.invoke(HttpEndpointFactory)
+                'mock': MockEndpoint,
+                'http': HttpEndpoint
             };
 
             return _.mapValues(apis, function(config, apiName) {
@@ -35,7 +34,4 @@ define([
                 return $injector.instantiate(service, {resource: service.prototype});
             });
         }
-    }
-
-    return APIProvider;
-});
+    });

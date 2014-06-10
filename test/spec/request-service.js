@@ -1,4 +1,4 @@
-define(['./request-service', 'superdesk/upload/upload-service'], function(RequestService, UploadService) {
+/*define(['./request-service', 'superdesk/upload/upload-service'], function(RequestService, UploadService) {*/
     'use strict';
 
     describe('request service', function() {
@@ -42,4 +42,4 @@ define(['./request-service', 'superdesk/upload/upload-service'], function(Reques
             expect(upload.isUpload).toHaveBeenCalledWith(config);
         }));
     });
-});
+//});
