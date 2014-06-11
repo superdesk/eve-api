@@ -23,7 +23,9 @@ with the same methods. With the service here you can configure them
 once for all in your configuration phase and use them throughout the
 whole application
 
-### Reasonable `$save` method
+### Leverage Eve HATEOAS
+
+The actual endpoints are requested from the Eve API home page
 
 ## Building
 
