@@ -1,6 +1,6 @@
 {
   "name": "eve-api",
-  "version": "0.0.0",
+  "version": "0.2.0",
   "description": "Angular resource service optimised for Python Eve backends",
   "main": "api-service.js",
   "scripts": {

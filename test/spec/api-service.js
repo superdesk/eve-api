@@ -191,6 +191,28 @@
             expect(user._links.self.href).toBe('/user_href');
         }));
 
+        it('filters out Eve metadata on update', inject(function(api, $httpBackend) {
+
+            var userData = {
+                _links: {self: {href: '/user_href'}},
+                _id: 2,
+                _etag: '2b8fed091431a71ea1542c78ea9f1a18e50c7c5b',
+                _created: '1970-01-01T00:00:00+0000',
+                _updated: '1970-01-01T00:00:00+0000',
+                username: 'test',
+                Avatar: {href: 'test'}
+            },
+                user;
+
+            $httpBackend.expectPATCH(userData._links.self.href, {username: 'test', Avatar: {href: 'test'}}).respond(200);
+
+            api.http.save(userData).then(function(_user) {
+                user = _user;
+            });
+
+            $httpBackend.flush();
+        }));
+
         it('can update with diff', inject(function(api, $httpBackend) {
             var userData = {_links: {self: {href: '/user_href'}}, _id: 2, username: 'test'},
                 diff = {Active: false};

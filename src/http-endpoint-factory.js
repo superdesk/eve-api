@@ -122,9 +122,13 @@ angular
          */
         HttpEndpoint.prototype.update = function(item, diff) {
             if (diff == null) {
-                diff = _.omit(item, function(value, key) {
-                    return key === '_links' || key === '_id';
-                });
+              diff = _.omit(item, [
+                '_links',
+                '_id',
+                '_etag',
+                '_created',
+                '_updated'
+              ]);
             }
             var url = item._links.self.href;
             return http({
