@@ -30,4 +30,7 @@ The actual endpoints are requested from the Eve API home page
 ## Building
 
 At the moment, just type `make` in this folder. Eventually a grunt
-file will be added
+file will be added.
+
+Remember to update the version in `package.json` and `bower.json`
+

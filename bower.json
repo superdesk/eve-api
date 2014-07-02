@@ -1,6 +1,6 @@
 {
   "name": "eve-api",
-  "version": "0.0.0",
+  "version": "0.2.0",
   "homepage": "https://github.com/sourcefabric-innovation/eve-resource",
   "description": "Angular resource services optimised for Python Eve backends",
   "keywords": [
