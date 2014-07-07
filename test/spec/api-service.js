@@ -199,6 +199,7 @@
                 _etag: '2b8fed091431a71ea1542c78ea9f1a18e50c7c5b',
                 _created: '1970-01-01T00:00:00+0000',
                 _updated: '1970-01-01T00:00:00+0000',
+                _status: 'OK',
                 username: 'test',
                 Avatar: {href: 'test'}
             },

@@ -127,7 +127,8 @@ angular
                 '_id',
                 '_etag',
                 '_created',
-                '_updated'
+                '_updated',
+                '_status'
               ]);
             }
             var url = item._links.self.href;
