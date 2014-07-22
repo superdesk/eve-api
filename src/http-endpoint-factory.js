@@ -83,14 +83,16 @@ angular
          * Get entity by given id
          *
          * @param {string} id
+         * @param {Object} params -- optional
          * @returns {Promise}
          */
-        HttpEndpoint.prototype.getById = function(id) {
+        HttpEndpoint.prototype.getById = function(id, params) {
             return getUrl(this).then(_.bind(function(resourceUrl) {
                 var url = resourceUrl.replace(/\/+$/, '') + '/' + id;
                 return http({
                     method: 'GET',
-                    url: url
+                    url: url,
+                    params: params
                 }).then(function(response) {
                     return response.data;
                 });
