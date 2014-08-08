@@ -19,12 +19,10 @@ angular
         this.$get = apiServiceFactory;
 
         apiServiceFactory.$inject = ['$injector',
-                                     'MockEndpoint',
                                      'HttpEndpoint'];
-        function apiServiceFactory($injector, MockEndpoint, HttpEndpoint) {
+        function apiServiceFactory($injector, HttpEndpoint) {
 
             var endpoints = {
-                'mock': MockEndpoint,
                 'http': HttpEndpoint
             };
 
